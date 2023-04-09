@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class ShapeController : MonoBehaviour
 {
@@ -27,19 +28,55 @@ public class ShapeController : MonoBehaviour
     private Score score;
 
     [SerializeField]
-    private AudioSource descend;
+    private AudioSource player;
 
     [SerializeField]
-    private AudioSource rotate;
+    private AssetReference descendReference;
+    private AudioClip descend;
 
     [SerializeField]
-    private AudioSource leftRight;
+    private AssetReference rotateReference;
+    private AudioClip rotate;
 
     [SerializeField]
-    private AudioSource clearClip;
+    private AssetReference leftRightReference;
+    private AudioClip leftRight;
 
     [SerializeField]
-    private AudioSource spawnClip;
+    private AssetReference clearReference;
+    private AudioClip clearClip;
+
+    [SerializeField]
+    private AssetReference spawnReference;
+    private AudioClip spawnClip;
+
+    void Awake()
+    {
+        StartCoroutine(loadClips());
+    }
+
+    IEnumerator loadClips()
+    {
+        var task = descendReference.LoadAssetAsync<AudioClip>();
+        yield return task;
+        descend = task.Result;
+
+        var task2 = rotateReference.LoadAssetAsync<AudioClip>();
+        yield return task2;
+        rotate = task2.Result;
+
+        task = leftRightReference.LoadAssetAsync<AudioClip>();
+        yield return task;
+        leftRight = task.Result;
+
+        task = clearReference.LoadAssetAsync<AudioClip>();
+        yield return task;
+        clearClip = task.Result;
+
+        task = spawnReference.LoadAssetAsync<AudioClip>();
+        yield return task;
+        spawnClip = task.Result;
+    }
 
     // Update is called once per frame
     void Update()
@@ -55,11 +92,8 @@ public class ShapeController : MonoBehaviour
             foreach (var triangleOffset in fallingShape.GetComponentsInChildren<TriangleOffset>())
             {
                 triangleOffset.Rotate();
-                rotate.PlayOneShot(rotate.clip);
+                player.PlayOneShot(rotate);
             }
-
-            // fallingShape.transform.Rotate(Vector3.back, 120f);
-            // todo: update offsets!
         }
 
         Dictionary<(int, int), GameObject> occupiedTriangles = new Dictionary<(int, int), GameObject>();
@@ -165,12 +199,12 @@ public class ShapeController : MonoBehaviour
             if (Input.GetAxis("Horizontal") > 0f && !rightBlocked)
             {
                 fallingShapeLocation.GoRight();
-                leftRight.PlayOneShot(leftRight.clip);
+                player.PlayOneShot(leftRight);
             }
             if (Input.GetAxis("Horizontal") < 0f && !leftBlocked)
             {
                 fallingShapeLocation.GoLeft();
-                leftRight.PlayOneShot(leftRight.clip);
+                player.PlayOneShot(leftRight);
             }
         }
 
@@ -185,12 +219,12 @@ public class ShapeController : MonoBehaviour
                 int index = Random.Range(0, prefabs.Count);
                 fallingShape = Instantiate(prefabs[index]);
                 fallingShape.transform.SetParent(gridWrapper.transform);
-                spawnClip.PlayOneShot(spawnClip.clip);
+                player.PlayOneShot(spawnClip);
             }
             else
             {
                 fallingShapeLocation.Descend();
-                descend.PlayOneShot(descend.clip);
+                player.PlayOneShot(descend);
             }
         }
         else if (Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") < 0f)
@@ -201,12 +235,12 @@ public class ShapeController : MonoBehaviour
                 int index = Random.Range(0, prefabs.Count);
                 fallingShape = Instantiate(prefabs[index]);
                 fallingShape.transform.SetParent(gridWrapper.transform);
-                                spawnClip.PlayOneShot(spawnClip.clip);
+                player.PlayOneShot(spawnClip);
             }
             else
             {
                 fallingShapeLocation.Descend();
-                descend.PlayOneShot(descend.clip);
+                player.PlayOneShot(descend);
             }
             timer = 0f;
         }
@@ -247,7 +281,7 @@ public class ShapeController : MonoBehaviour
             {
                 Debug.Log($"{b} is clear!");
                 score.ClearLine();
-                clearClip.PlayOneShot(clearClip.clip);
+                player.PlayOneShot(clearClip);
 
                 for (int a = 0; a < 18; a += 3)
                 {
