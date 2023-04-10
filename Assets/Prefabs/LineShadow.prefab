@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7479723056565846400}
   - component: {fileID: 4346226995363295971}
-  - component: {fileID: 5085792529374027791}
+  - component: {fileID: 6029645092255352711}
   m_Layer: 0
   m_Name: Triangle (2)
   m_TagString: Untagged
@@ -71,11 +71,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1552319135
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae55a9158ea4d4fd0be7199a02484296, type: 3}
-  m_Color: {r: 0.65882355, g: 0.7921569, b: 0.34509805, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5085792529374027791
+--- !u!114 &6029645092255352711
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,12 +94,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4628579592606126886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c010ff6e6b2e4c668d3b648de6453a0, type: 3}
+  m_Script: {fileID: 11500000, guid: d140515bb15d24dfdb0c9e8f669a09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   a: 1
   b: -1
-  twoSided: 1
+  lambda: 10
 --- !u!1 &4773516536270466953
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4773516536270466954}
   - component: {fileID: 4773516536270466955}
-  - component: {fileID: 4773516536270466956}
+  - component: {fileID: 4471924361853912690}
   m_Layer: 0
   m_Name: Triangle (1)
   m_TagString: Untagged
@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4773516536270466953}
   m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
-  m_LocalPosition: {x: 0.5, y: -0.8660254, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.8660254, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,11 +171,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1552319135
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae55a9158ea4d4fd0be7199a02484296, type: 3}
-  m_Color: {r: 0.65882355, g: 0.7921569, b: 0.34509805, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 1
   m_DrawMode: 0
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4773516536270466956
+--- !u!114 &4471924361853912690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,12 +194,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4773516536270466953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c010ff6e6b2e4c668d3b648de6453a0, type: 3}
+  m_Script: {fileID: 11500000, guid: d140515bb15d24dfdb0c9e8f669a09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   a: 0
-  b: -3
-  twoSided: 0
+  b: 3
+  lambda: 10
 --- !u!1 &4773516536397734670
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4773516536397734671}
   - component: {fileID: 4773516536397734704}
-  - component: {fileID: 4773516536397734705}
+  - component: {fileID: 5183126619962604215}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -271,11 +271,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1552319135
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae55a9158ea4d4fd0be7199a02484296, type: 3}
-  m_Color: {r: 0.65882355, g: 0.7921569, b: 0.34509805, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -285,7 +285,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4773516536397734705
+--- !u!114 &5183126619962604215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,12 +294,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4773516536397734670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c010ff6e6b2e4c668d3b648de6453a0, type: 3}
+  m_Script: {fileID: 11500000, guid: d140515bb15d24dfdb0c9e8f669a09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   a: 0
   b: 0
-  twoSided: 0
+  lambda: 10
 --- !u!1 &4773516536407018783
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,9 +309,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4773516536407018752}
-  - component: {fileID: 4773516536407018754}
+  - component: {fileID: 4948325423531486538}
   m_Layer: 0
-  m_Name: Line 1
+  m_Name: LineShadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4773516536407018783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 7.5055537, z: 0}
+  m_LocalPosition: {x: -4, y: 9.237604, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -336,7 +336,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4773516536407018754
+--- !u!114 &4948325423531486538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,11 +345,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4773516536407018783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb9f8310413d24fb1a98562441038952, type: 3}
+  m_Script: {fileID: 11500000, guid: 236185f4d88d84fc2885a6bb34d71dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   a: 4
   b: 32
+  lambda: 10
 --- !u!1 &5074100405230126822
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3644886780548635960}
   - component: {fileID: 4143033341877304416}
-  - component: {fileID: 3482919360156773403}
+  - component: {fileID: 3469041020767167981}
   m_Layer: 0
   m_Name: Triangle (3)
   m_TagString: Untagged
@@ -421,11 +422,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1552319135
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ae55a9158ea4d4fd0be7199a02484296, type: 3}
-  m_Color: {r: 0.65882355, g: 0.7921569, b: 0.34509805, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -435,7 +436,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3482919360156773403
+--- !u!114 &3469041020767167981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -444,9 +445,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5074100405230126822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c010ff6e6b2e4c668d3b648de6453a0, type: 3}
+  m_Script: {fileID: 11500000, guid: d140515bb15d24dfdb0c9e8f669a09e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   a: 1
   b: 2
-  twoSided: 1
+  lambda: 10

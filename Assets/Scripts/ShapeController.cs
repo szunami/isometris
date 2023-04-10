@@ -6,11 +6,28 @@ using UnityEngine.AddressableAssets;
 public class ShapeController : MonoBehaviour
 {
 
+    [System.Serializable]
+    class ShapeAndShadow
+    {
+        public GameObject shape;
+
+        public GameObject shadow;
+    }
+
+    [SerializeField]
+    private Dictionary<GameObject, GameObject> test;
+
+    [SerializeField]
+    private List<ShapeAndShadow> shapesAndShadows;
+
     [SerializeField]
     private List<GameObject> prefabs;
 
     [SerializeField]
     private GameObject fallingShape;
+
+    [SerializeField]
+    private GameObject shadow;
 
     [SerializeField]
     private float beat = 1f;
@@ -93,6 +110,11 @@ public class ShapeController : MonoBehaviour
             {
                 triangleOffset.Rotate();
                 player.PlayOneShot(rotate);
+            }
+
+            foreach (var triangleOffset in shadow.GetComponentsInChildren<ShadowTriangleOffset>())
+            {
+                triangleOffset.Rotate();
             }
         }
 
@@ -216,10 +238,8 @@ public class ShapeController : MonoBehaviour
             if (spawn)
             {
                 handleClears();
-                int index = Random.Range(0, prefabs.Count);
-                fallingShape = Instantiate(prefabs[index]);
-                fallingShape.transform.SetParent(gridWrapper.transform);
-                player.PlayOneShot(spawnClip);
+                spawnNext();
+
             }
             else
             {
@@ -232,10 +252,7 @@ public class ShapeController : MonoBehaviour
             if (spawn)
             {
                 handleClears();
-                int index = Random.Range(0, prefabs.Count);
-                fallingShape = Instantiate(prefabs[index]);
-                fallingShape.transform.SetParent(gridWrapper.transform);
-                player.PlayOneShot(spawnClip);
+                spawnNext();
             }
             else
             {
@@ -244,6 +261,48 @@ public class ShapeController : MonoBehaviour
             }
             timer = 0f;
         }
+
+        // todo: update shadow position
+        var shadowLocation = shadow.GetComponent<ShadowShapeLocation>();
+        shadowLocation.SetA(fallingShapeLocation.A());
+        shadowLocation.SetB(fallingShapeLocation.B());
+
+        for (int b = fallingShapeLocation.B(); b > 0; b -= 3)
+        {
+            var anyOverlap = false;
+
+            shadowLocation.SetB(b);
+
+            foreach (var triangleOffset in shadow.GetComponentsInChildren<ShadowTriangleOffset>())
+            {
+                if (triangleOffset.EffectivePosition().b < 0)
+                {
+                    anyOverlap = true;
+                }
+                if (occupiedTriangles.ContainsKey(triangleOffset.EffectivePosition()))
+                {
+                    anyOverlap = true;
+                }
+            }
+
+            if (anyOverlap)
+            {
+                shadowLocation.SetB(b + 3);
+                break;
+            }
+        }
+    }
+
+    void spawnNext()
+    {
+        int index = Random.Range(0, shapesAndShadows.Count);
+        var shapeAndShadow = shapesAndShadows[index];
+        fallingShape = Instantiate(shapeAndShadow.shape);
+        fallingShape.transform.SetParent(gridWrapper.transform);
+        Destroy(shadow);
+        shadow = Instantiate(shapeAndShadow.shadow);
+        shadow.transform.SetParent(gridWrapper.transform);
+        player.PlayOneShot(spawnClip);
     }
 
     void handleClears()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class TriangleOffset : MonoBehaviour
+public class ShadowTriangleOffset : MonoBehaviour
 {
     [SerializeField]
     private int a;
@@ -45,7 +45,7 @@ public class TriangleOffset : MonoBehaviour
 
     public (int a, int b) EffectivePosition()
     {
-        var shapeLocation = GetComponentInParent<ShapeLocation>();
+        var shapeLocation = GetComponentInParent<ShadowShapeLocation>();
         return (shapeLocation.A() + a, shapeLocation.B() + b);
     }
 
